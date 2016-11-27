@@ -14,30 +14,56 @@ class Doors:
         Om man som anvndare ska kunna attackera dörrar för att kunna öppna dem?
         pass
 '''
-    
+def openDoor(num):
+    #treasure or nah
+    skattchans = [
+        "en SKATT!", 
+        "fler dörrar.", 
+        "fler dörrar.", 
+        "fler dörrar.",
+        "fler dörrar."
+    ]
+    ton = random.choice(skattchans)
+    if ton == " fler dörrar.":
+        print ("Du öppnar dörr nr " + str(num) + ".")
+        print ("Bakom dörren finns...")
+        time.sleep(0.3)
+        print (".")
+        time.sleep(0.3)
+        print (".")
+        time.sleep(0.3)
+        print (".")
+        time.sleep(0.3)
+        print ("..." + str(ton))
+        
+
 def chooseDoor():
     doorlist = [
-        'Första', 'Andra', 'Tredje'
+        1, 2, 3
     ]
     print ("Its time to choose your first door!")
     print ("Det finns 3 dörrar framför dig.")
     time.sleep(0.6)
     print ("Välj mellan 1, 2 eller 3. Eller skriv random för att låta oss välja!")
+    doorChoice(doorlist)
+    
+def doorChoice(doorlist):
     dc = input ("Ditt val: ")
-    if dc is 1:
-        print ("Du har valt dörr nummer 1")
-        
-    elif dc is 2:
-        print ("Du har valt dörr nummer 2")
-        
-    elif dc is 3:
-        print ("Du har valt dörr nummer 3")
-        
-    else: 
+    if dc is 1 or dc == 2 or dc == 3:
+        print ("Du har valt dörr nummer " + str(dc))
+        openDoor(dc)
+    elif dc is "random":
+        rVal = random.choice(doorlist)
+        if rVal is 1 or rVal == 2 or rVal == 3:
+            print ("Vi har valt dörr nummer " + str(rVal))
+            openDoor(rVal)
+    else:
         print ("...")
         time.sleep(0.5)
-        '''kör om frågan'''
-    
+        print (30*"#")
+        print ("Nånting gick fel")
+        print (30*"#")
+        doorChoice()
     #print (random.choice(doorlist))
     
 def one():
@@ -66,5 +92,11 @@ def menuval():
         two()
     elif mv is 3:
         exit()
-    
+    else:
+        time.sleep(0.5)
+        print ("Oj! Vad har hänt?")
+        time.sleep(0.5)
+        print ("Försök igen!")
+        time.sleep(0.5)
+        menu()
 menu()
